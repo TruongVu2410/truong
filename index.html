@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chúc Thi Tốt!</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffe6f0, #e6f7ff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .heart {
+      font-size: 80px;
+      color: red;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #333;
+      text-align: center;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .signature {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #555;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">❤️</div>
+
+  <div class="message">
+    Chúc bạn <strong>thi thật tốt</strong>!<br>
+    Tự tin – Bình tĩnh – Chiến thắng! 💪📚
+  </div>
+
+  <div class="signature">– Gửi lời chúc từ Vũ Mạnh Trường –</div>
+
+</body>
+</html>
