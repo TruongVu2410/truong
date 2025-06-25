@@ -1,63 +1,246 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Chúc Thi Tốt!</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #ffe6f0, #e6f7ff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Lời Chúc Thi Tốt Siêu Cấp ✨</title>
+    <style>
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #ff69b4; /* Hot Pink */
+            --secondary-color: #ffd700; /* Gold */
+            --text-color: #ffffff;
+            --bg-color: #000020; /* Dark Blue/Black */
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow: hidden;
+        }
 
-    .heart {
-      font-size: 80px;
-      color: red;
-      animation: pulse 1s infinite;
-    }
+        /* --- Start Screen Overlay --- */
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 100;
+            cursor: pointer;
+        }
+        #start-button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: var(--bg-color);
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .start-text {
+            color: var(--text-color);
+            margin-top: 20px;
+            font-size: 1rem;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.8; }
-      50% { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.8; }
-    }
 
-    .message {
-      margin-top: 20px;
-      font-size: 24px;
-      color: #333;
-      text-align: center;
-      animation: fadeIn 3s ease-in-out;
-    }
+        /* --- Main Content --- */
+        #main-content {
+            display: none; /* Hide initially */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* --- Fireworks --- */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            opacity: 1;
+            animation: firework-explode 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        @keyframes firework-explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(25); opacity: 0; }
+        }
 
-    .signature {
-      margin-top: 40px;
-      font-size: 18px;
-      color: #555;
-      font-style: italic;
-    }
-  </style>
+        /* --- Content Wrapper --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            max-width: 90%;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+        }
+
+        /* --- Twinkling Hearts --- */
+        .heart-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+        }
+        .heart {
+            color: var(--primary-color);
+            animation: twinkle 1.5s infinite;
+            display: inline-block;
+        }
+        .heart:nth-child(2) { animation-delay: 0.3s; }
+        .heart:nth-child(3) { animation-delay: 0.6s; }
+        @keyframes twinkle {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* --- Typing Text --- */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        #typing-wish {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: #eee;
+            min-height: 150px;
+            white-space: pre-wrap;
+            border-right: .15em solid var(--secondary-color);
+            animation: blink-caret .75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-color); }
+        }
+
+        /* --- Signature --- */
+        .signature {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        /* --- SoundCloud Iframe --- */
+        #soundcloud-player {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.7; /* Keep it subtle */
+        }
+    </style>
 </head>
 <body>
 
-  <div class="heart">❤️</div>
+    <div id="start-screen">
+        <button id="start-button">🎁 Mở quà cho Trang 🎁</button>
+        <p class="start-text">(Hãy bật loa để có trải nghiệm tốt nhất nhé)</p>
+    </div>
 
-  <div class="message">
-    Chúc bạn <strong>thi thật tốt</strong>!<br>
-    Tự tin – Bình tĩnh – Chiến thắng! 💪📚
-  </div>
+    <div id="main-content">
+        <div class="heart-container">
+            <span class="heart">💖</span>
+            <span class="heart">💖</span>
+            <span class="heart">💖</span>
+        </div>
 
-  <div class="signature">– Gửi lời chúc từ Vũ Mạnh Trường –</div>
+        <div class="content-wrapper">
+            <h1 id="greeting"></h1>
+            <p id="typing-wish"></p>
+            <div class="signature">
+                From Gemini with love ✨
+            </div>
+        </div>
+    </div>
+    
+    <div id="soundcloud-container"></div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const startButton = document.getElementById('start-button');
+            const startScreen = document.getElementById('start-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            startButton.addEventListener('click', function() {
+                // 1. Ẩn màn hình chờ và hiện nội dung chính
+                startScreen.style.display = 'none';
+                mainContent.style.display = 'flex';
+
+                // 2. Chèn và phát nhạc
+                const soundcloudContainer = document.getElementById('soundcloud-container');
+                soundcloudContainer.innerHTML = `
+                    <iframe id="soundcloud-player" width="150" height="80" allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/gustixa/lemon-tree-remix&color=%23ff5500&auto_play=true&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true&visual=false">
+                    </iframe>
+                `;
+
+                // 3. Khởi chạy các hiệu ứng
+                startAnimations();
+            });
+
+            function startAnimations() {
+                /* --- Tùy chỉnh tên --- */
+                const name = "Trang"; 
+                document.getElementById('greeting').textContent = `Gửi đến em ${name} iu dấu ^^,`;
+
+                /* --- 📝 Lời chúc đánh máy --- */
+                const wishText = `Kỳ thi quan trọng sắp đến rồi, anh biết em đã cố gắng rất nhiều. Hãy tin vào bản thân, giữ một tinh thần thật thoải mái và một cái đầu lạnh nhé.\n\nMọi nỗ lực rồi sẽ được đền đáp xứng đáng. Chúc em bình tĩnh, tự tin, làm bài thật tốt và đạt được kết quả cao nhất! Cố lên! 💪`;
+                let i = 0;
+                const typingElement = document.getElementById('typing-wish');
+                const typingSpeed = 70;
+
+                function typeWriter() {
+                    if (i < wishText.length) {
+                        typingElement.innerHTML += wishText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, typingSpeed);
+                    } else {
+                        typingElement.style.borderRight = 'none';
+                    }
+                }
+                typeWriter();
+
+                /* --- 🌠 Pháo hoa bắn nền --- */
+                setInterval(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = Math.random() * 100 + 'vw';
+                    firework.style.top = Math.random() * 100 + 'vh';
+                    const colors = ['#ff69b4', '#ffd700', '#7fffd4', '#9370db', '#ff7f50'];
+                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    document.body.appendChild(firework);
+
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 1200);
+                }, 400);
+            }
+        });
+    </script>
 
 </body>
 </html>
